@@ -22,7 +22,7 @@ describe('Thermostat Features', function() {
     var initialTemp = thermostat.temperature;
     console.log(initialTemp);
     var tempChange = 2;
-    
+
     thermostat.down(tempChange);
 
     console.log(thermostat.temperature);
@@ -34,5 +34,11 @@ describe('Thermostat Features', function() {
       thermostat.down(5);
 
       expect(thermostat.temperature).toEqual(10);
+    });
+
+    it('if power saving mode is on, max temp is 25 degrees', function() {
+      thermostat.temperature = 30;
+      thermostat.powersaveOn();
+      expect(thermostat.temperature).toEqual(25);
     });
 });

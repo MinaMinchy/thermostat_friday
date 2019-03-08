@@ -7,13 +7,6 @@ Thermostat.prototype.up = function(tempChange) {
   this.temperature += tempChange;
 };
 
-// Thermostat.prototype.down = function(tempChange) {
-//   if ((this.temperature - this.MIN_TEMP) > tempChange) {
-//     this.temperature -= tempChange;
-//   } else {
-//     console.error('temperature cannot be less than the minimum temperature' + this.MIN_TEMP)
-//   };
-// };
 
 Thermostat.prototype.down = function(tempChange) {
   console.log(Thermostat.MIN_TEMP);
@@ -22,5 +15,11 @@ Thermostat.prototype.down = function(tempChange) {
   } else{
     this.temperature -= tempChange;
   }
-};
 
+
+  Thermostat.prototype.powersaveOn = function() {
+    if(this.temperature > 25) {
+      this.temperature = 25;
+    };
+  };
+};
