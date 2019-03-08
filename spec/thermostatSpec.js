@@ -1,33 +1,38 @@
-describe('Thermostat Features', () => {
+describe('Thermostat Features', function() {
 
-  // describe('thermostat', function() {
-  //   var thermostat;
+  var thermostat;
 
+  beforeEach( function() {
+    thermostat = new Thermostat();
+  });
 
+  it('starts at 20 degrees', function () {
+    expect(thermostat.temperature).toEqual (20);
+  });
 
+  it('increases temperature with an up function', function() {
+    var initialTemp = thermostat.temperature
+    var tempChange = 2;
+    thermostat.up(tempChange);
 
-    it('starts at 20 degrees', function () {
-      var thermostat = new Thermostat();
-      expect(thermostat.temperature).toEqual (20);
+    expect(thermostat.temperature).toEqual(initialTemp+tempChange)
     });
 
-    it('increases temperature with an up function', () => {
-      var thermostat = new Thermostat();
-      var initialTemp = thermostat.temperature
-      var tempChange = 2;
-      thermostat.up(tempChange);
-
-      expect(thermostat.temperature).toEqual(initialTemp+tempChange)
-     });
-
     it('decrease temperature with a down function', function() {
-      var thermostat = new Thermostat();
-      var initialTemp = thermostat.temperature
-      var tempChange = 2;
-      thermostat.down(tempChange);
-      expect(thermostat.temperature).toEqual(initialTemp-tempChange)
-     });
+    var initialTemp = thermostat.temperature;
+    console.log(initialTemp);
+    var tempChange = 2;
+    
+    thermostat.down(tempChange);
 
-  // });
+    console.log(thermostat.temperature);
+    expect(thermostat.temperature).toEqual(initialTemp-tempChange)
+    });
 
+    it('minimum temperature is 10 degrees', function() {
+      thermostat.temperature = 10;
+      thermostat.down(5);
+
+      expect(thermostat.temperature).toEqual(10);
+    });
 });
